@@ -3,7 +3,7 @@ function Footer() {
   return (
     <footer>
       <p>
-        Copyright<span class="copyright">&copy;</span> {date.getFullYear()}
+        Copyright<span className="copyright">&copy;</span> {date.getFullYear()}
       </p>
     </footer>
   );
