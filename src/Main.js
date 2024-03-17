@@ -1,25 +1,28 @@
 import { useState } from "react";
-let names = ["jeevan", "balu", "santosh", "mahesh"];
+
+let Items = [
+  { id: 1, checked: false, item: "Item 1" },
+  { id: 2, checked: false, item: "Item 2" },
+  { id: 3, checked: false, item: "Item 3" },
+];
 
 function Main() {
-  let [name, setName] = useState("Jeevan");
-  let [count, setCount] = useState(0);
-
-  function handleNames(arr) {
-    let randomNum = (num) => Math.floor(Math.random() * num);
-    setName(arr[randomNum(arr.length)]);
-  }
-
-  function handleCount() {
-    setCount((count += 1));
-  }
+  let [items, setItems] = useState(Items);
 
   return (
     <main>
-      <h1>{count}</h1>
-      <p>Hello {name}</p>
-      <button onClick={() => handleNames(names)}>Change name</button>
-      <button onClick={handleCount}>Change count</button>
+      <ul>
+        {items.map((ele) => {
+          const { id, item, checked } = ele;
+          return (
+            <li>
+              <input type="checkbox" id={id} key={id} checked={checked} />
+              <label htmlFor={id}>{item}</label>
+              <button>Delete</button>
+            </li>
+          );
+        })}
+      </ul>
     </main>
   );
 }
